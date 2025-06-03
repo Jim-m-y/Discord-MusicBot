@@ -27,9 +27,9 @@ module.exports = {
     if (!args[0])
       return client.sendTime(message.channel, "❌ | **Invalid arguments.**");
 
-    // Check if (args[0] - 1) is a valid index
-    let trackNum = parseInt(args[0] - 1);
-    if (trackNum < 1 || trackNum > player.queue.length - 1) {
+    // Check if (args[0]) is a valid index (trackNum starts from 0)
+    let trackNum = parseInt(args[0]) - 1;
+    if (trackNum < 0 || trackNum >= player.queue.length) {
       return client.sendTime(message.channel, "❌ | **Invalid track number.**");
     }
 
@@ -64,7 +64,7 @@ module.exports = {
       const guild = client.guilds.cache.get(interaction.guild_id);
       const member = guild.members.cache.get(interaction.member.user.id);
 
-      let player = await client.Manager.get(interaction.guild.id);
+      let player = await client.Manager.get(interaction.guild_id);
       if (!player)
         return client.sendTime(
           interaction,
@@ -73,9 +73,9 @@ module.exports = {
       if (!args[0].value)
         return client.sendTime(interaction, "❌ | **Invalid track number.**");
 
-      // Check if (args[0] - 1) is a valid index
-      let trackNum = parseInt(args[0].value - 1);
-      if (trackNum < 1 || trackNum > player.queue.length - 1) {
+      // Check if (args[0]) is a valid index (trackNum starts from 0)
+      let trackNum = parseInt(args[0].value) - 1;
+      if (trackNum < 0 || trackNum >= player.queue.length) {
         return client.sendTime(interaction, "❌ | **Invalid track number.**");
       }
 
