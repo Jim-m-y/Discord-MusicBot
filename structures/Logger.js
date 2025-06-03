@@ -13,14 +13,13 @@ class Logger {
     this.logger.log({
       level: "info",
       message:
-        `${d.getHours()}:${
-          d.getMinutes
-        } - ${d.getDate()}:${d.getMonth()}:${d.getFullYear()} | Info: ` + Text,
+        `${d.getHours()}:${d.getMinutes()} - ${d.getDate()}:${d.getMonth()}:${d.getFullYear()} | Info: ` +
+        Text,
     });
     console.log(
       colors.green(
-        `${d.getDate()}:${d.getMonth()}:${d.getFullYear()} - ${d.getHours()}:${d.getMinutes()}`
-      ) + colors.yellow(" | Info: " + Text)
+        `${d.getDate()}:${d.getMonth()}:${d.getFullYear()} - ${d.getHours()}:${d.getMinutes()}`,
+      ) + colors.yellow(" | Info: " + Text),
     );
   }
 }
