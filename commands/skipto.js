@@ -137,11 +137,14 @@ module.exports = {
             `❌ | That song is not in the queue! Please try again!`
           );
 
-        player.stop(skipTo);
-        //Send Success Message
+        // remove tracks before the selected song
+        player.queue.remove(0, Number(skipTo) - 1);
+        // stop the player so the next track plays
+        player.stop();
+        // Send success message
         return client.sendTime(
           interaction,
-          `⏭ Skipped \`${Number(skipTo)}\` songs`
+          `⏭ Skipped \`${Number(skipTo - 1)}\` songs`
         );
       } catch (e) {
         console.log(String(e.stack).bgRed);
