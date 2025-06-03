@@ -42,7 +42,7 @@ class DiscordMusicBot extends Client {
     }
     if (this.botconfig.Token === "")
       return new TypeError(
-        "The botconfig.js is not filled out. Please make sure nothing is blank, otherwise the bot will not work properly."
+        "The botconfig.js is not filled out. Please make sure nothing is blank, otherwise the bot will not work properly.",
       );
 
     this.LoadCommands();
@@ -99,8 +99,8 @@ class DiscordMusicBot extends Client {
                 typeof message == "string"
                   ? { content: message }
                   : message.type && message.type === "rich"
-                  ? { embeds: [message] }
-                  : message,
+                    ? { embeds: [message] }
+                    : message,
             },
           });
       };
@@ -130,7 +130,7 @@ class DiscordMusicBot extends Client {
           password: this.botconfig.Lavalink.pass,
           secure: this.botconfig.Lavalink.secure,
         },
-      ]
+      ],
     );
 
     this.Manager = new Manager({
@@ -152,12 +152,12 @@ class DiscordMusicBot extends Client {
       },
     })
       .on("nodeConnect", (node) =>
-        this.log(`Lavalink: Node ${node.options.identifier} connected`)
+        this.log(`Lavalink: Node ${node.options.identifier} connected`),
       )
       .on("nodeError", (node, error) =>
         this.log(
-          `Lavalink: Node ${node.options.identifier} had an error: ${error.message}`
-        )
+          `Lavalink: Node ${node.options.identifier} had an error: ${error.message}`,
+        ),
       )
       .on("trackStart", async (player, track) => {
         this.SongsPlayed++;
@@ -204,7 +204,7 @@ class DiscordMusicBot extends Client {
             return this.log(
               "Unable to load Command: " +
                 file.split(".")[0] +
-                ", Reason: File doesn't had run/name/desciption"
+                ", Reason: File doesn't had run/name/description",
             );
           this.commands.set(file.split(".")[0].toLowerCase(), cmd);
           this.log("Command Loaded: " + file.split(".")[0]);
@@ -244,7 +244,7 @@ class DiscordMusicBot extends Client {
       .setColor("RED")
       .setDescription(Error)
       .setFooter(
-        "If you think this as a bug, please report it in the support server!"
+        "If you think this as a bug, please report it in the support server!",
       );
 
     Channel.send(embed);
@@ -262,7 +262,7 @@ class DiscordMusicBot extends Client {
     this.login(this.botconfig.Token);
     if (this.botconfig.ExpressServer) {
       this.http.listen(process.env.PORT || this.botconfig.Port, () =>
-        this.log("Web Server has been started")
+        this.log("Web Server has been started"),
       );
     }
   }
